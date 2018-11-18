@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{E659AF07-57F6-9A4B-7913-826001ACC3A3}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controls.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Interact2D.cs" Line="56" Column="100" />
+      <File FileName="Assets/Scripts/Movement.cs" Line="23" Column="48" />
+      <File FileName="Assets/Scripts/Controls.cs" Line="35" Column="6" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
