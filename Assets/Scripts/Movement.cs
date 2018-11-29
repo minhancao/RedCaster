@@ -19,7 +19,6 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        /* CONTROL CHANGE */
         if (Input.GetKeyUp(Controls.player.left) || Input.GetKeyUp(Controls.player.right)){
             horizontalMove = 0;
         }
@@ -31,9 +30,7 @@ public class Movement : MonoBehaviour {
         } 
         //horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-        /* CONTROL CHANGE */
         if(Input.GetKeyDown(Controls.player.jump))
-        //if (Input.GetButtonDown("Jump"))
         {
             jump = true;
         }

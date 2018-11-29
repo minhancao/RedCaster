@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{E659AF07-57F6-9A4B-7913-826001ACC3A3}</ProjectGuid>
+    <ProjectGuid>{C07A87AF-9BCD-298B-C25F-B3667A012CF9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -107,15 +107,19 @@
     <Compile Include="Assets\Fonts\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Fonts\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Fonts\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\Jellyfish.cs" />
+    <Compile Include="Assets\NextLevel.cs" />
+    <Compile Include="Assets\Scripts\ActivateBoss.cs" />
     <Compile Include="Assets\Scripts\AIMovement.cs" />
-    <Compile Include="Assets\Scripts\Character.cs" />
+    <Compile Include="Assets\Scripts\BossEnemy.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
+    <Compile Include="Assets\Scripts\CharacterInteract.cs" />
     <Compile Include="Assets\Scripts\CharacterStats.cs" />
     <Compile Include="Assets\Scripts\ControlMenu.cs" />
     <Compile Include="Assets\Scripts\Controls.cs" />
     <Compile Include="Assets\Scripts\Damage.cs" />
     <Compile Include="Assets\Scripts\Destroy.cs" />
+    <Compile Include="Assets\Scripts\Dialogue.cs" />
+    <Compile Include="Assets\Scripts\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Fireball.cs" />
     <Compile Include="Assets\Scripts\FireballEffect.cs" />
@@ -124,6 +128,8 @@
     <Compile Include="Assets\Scripts\FrostEffect.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\Interact2D.cs" />
+    <Compile Include="Assets\Scripts\Interactable.cs" />
+    <Compile Include="Assets\Scripts\Jellyfish.cs" />
     <Compile Include="Assets\Scripts\LevelSystem.cs" />
     <Compile Include="Assets\Scripts\Lightning.cs" />
     <Compile Include="Assets\Scripts\LightningEffect.cs" />
@@ -139,13 +145,17 @@
     <Compile Include="Assets\Scripts\shieldBar.cs" />
     <Compile Include="Assets\Scripts\shieldBarFill.cs" />
     <Compile Include="Assets\Scripts\ShootProjectile.cs" />
+    <Compile Include="Assets\Scripts\SkeletonChief.cs" />
+    <Compile Include="Assets\Scripts\SkeletonChiefProjectile.cs" />
     <Compile Include="Assets\Scripts\Spellshield.cs" />
     <Compile Include="Assets\Scripts\StatusIndicator.cs" />
     <Compile Include="Assets\Scripts\Wand.cs" />
     <Compile Include="Assets\Scripts\WandRotation.cs" />
+    <Compile Include="Assets\Scripts\Wolf.cs" />
     <None Include="Assets\Asset Resource\7soulsrpggraphics_uipack\Assets\readme.txt" />
     <None Include="Assets\Fonts\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Fonts\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Asset Resource\animalsrpgsprites\Assets\README.txt" />
     <None Include="Assets\Asset Resource\over80characterswithanimations!\Assets\readme_update.txt" />
     <None Include="Assets\Fonts\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Fonts\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -177,22 +187,22 @@
     <None Include="Assets\Asset Resource\Epic Toon FX\Prefabs\Environment\Environment FX.txt" />
     <None Include="Assets\Fonts\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Cinemachine">
-      <HintPath>/Users/Yukai/Documents/CS 160/CS160 Project/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+      <HintPath>/Users/Yukai/Documents/RedCaster/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>/Users/Yukai/Documents/CS 160/CS160 Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>/Users/Yukai/Documents/RedCaster/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/Yukai/Documents/CS 160/CS160 Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/Yukai/Documents/RedCaster/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>/Users/Yukai/Documents/CS 160/CS160 Project/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>/Users/Yukai/Documents/RedCaster/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>/Users/Yukai/Documents/CS 160/CS160 Project/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+      <HintPath>/Users/Yukai/Documents/RedCaster/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/Yukai/Documents/CS 160/CS160 Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/Yukai/Documents/RedCaster/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

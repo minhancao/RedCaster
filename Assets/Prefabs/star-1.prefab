@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d30b5c7736cc49c4ba3acd83afc1ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Seconds: 3
 --- !u!114 &114582556182726696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080155484f2d64d4fb424788caffc3e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DEBUG: 0
+  owner: 1
   damageValue: 6
 --- !u!114 &114673456380548978
 MonoBehaviour:

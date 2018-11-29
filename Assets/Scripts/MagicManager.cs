@@ -35,6 +35,8 @@ public class MagicManager : MonoBehaviour {
     public GameObject StoredLightningIcon;
     public GameObject StoredTeleportIcon;
 
+    public GameObject[] UISkillBox;
+
 
 
     //public GameObject Icon;
@@ -171,28 +173,31 @@ public class MagicManager : MonoBehaviour {
         if (spell.Equals("FireBall"))
         {
             storedSpellIcon[position] = Instantiate(StoredFireballIcon, UIOverlay.transform.position, UIOverlay.transform.rotation);
-            storedSpellIcon[position].transform.SetParent(UIOverlay.transform);
-            storedSpellIcon[position].transform.position += new Vector3(400 + position * 70, -400, 0);
+            //storedSpellIcon[position].transform.SetParent(UIOverlay.transform);
+            //storedSpellIcon[position].transform.position += new Vector3(596 + position * 70, -347, 0);
         }
         if (spell.Equals("Frost"))
         {
             storedSpellIcon[position] = Instantiate(StoredFrostIcon, UIOverlay.transform.position, UIOverlay.transform.rotation);
-            storedSpellIcon[position].transform.SetParent(UIOverlay.transform);
-            storedSpellIcon[position].transform.position += new Vector3(400 + position * 70, -400, 0);
+            //storedSpellIcon[position].transform.SetParent(UIOverlay.transform);
+            //storedSpellIcon[position].transform.position += new Vector3(596 + position * 70, -347, 0);
         }
         if (spell.Equals("Lightning"))
         {
             storedSpellIcon[position] = Instantiate(StoredLightningIcon, UIOverlay.transform.position, UIOverlay.transform.rotation);
-            storedSpellIcon[position].transform.SetParent(UIOverlay.transform);
-            storedSpellIcon[position].transform.position += new Vector3(400 + position * 70, -400, 0);
+            //storedSpellIcon[position].transform.SetParent(UIOverlay.transform);
+            //storedSpellIcon[position].transform.position += new Vector3(596 + position * 70, -347, 0);
         }
         if (spell.Equals("Teleport"))
         {
             storedSpellIcon[position] = Instantiate(StoredTeleportIcon, UIOverlay.transform.position, UIOverlay.transform.rotation);
-            storedSpellIcon[position].transform.SetParent(UIOverlay.transform);
-            storedSpellIcon[position].transform.position += new Vector3(400 + position * 70, -400, 0);
+            //storedSpellIcon[position].transform.SetParent(UIOverlay.transform);
+            //storedSpellIcon[position].transform.position += new Vector3(596 + position * 70, -347, 0);
         }
 
+        // Moved copy pasted shit down here
+        storedSpellIcon[position].transform.SetParent(UIOverlay.transform,false);
+        storedSpellIcon[position].transform.position = UISkillBox[position].transform.position;
 
     }
 

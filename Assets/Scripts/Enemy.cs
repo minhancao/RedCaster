@@ -3,38 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    public float health = 100; //health this enemy has
+    public int TotalHealth = 100;
+    public int health = 100; //health this enemy has
     //public float damage = 20; //damage it does to main character
     public int experience;
 
     public CharacterStats character;
     public GameObject DeathEffect;
 
+
 	// Use this for initialization
 	void Start () {
-		
+        health = TotalHealth;
 	}
 
-    public void damageToEnemy(float damage)
+    public virtual void damageToEnemy(int damage)
     {
+        // need to add damage indicator
         health -= damage;
         Debug.Log("Enemy took 20 dmg, Health: " + health);
         if (health <= 0)
         {
-            Instantiate(DeathEffect, transform.position, transform.rotation);
-            character.levelUp(experience);
-            Destroy(gameObject);
+            death();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D hitInfo)
+    void OnTriggerEnter2D(Collider2D hitInfo)
     {
 
         Projectile3D proj = hitInfo.gameObject.GetComponent("Projectile3D") as Projectile3D;
-        if (proj != null)
+        Damage damage = hitInfo.GetComponent<Damage>();
+        if (proj != null && damage.owner == Damage.ORIGIN.PLAYER)
         {
-            damageToEnemy(hitInfo.GetComponent<Damage>().damageValue);
+            damageToEnemy(damage.damageValue);
         }
 
     }
+
+    public virtual void death(){
+        Instantiate(DeathEffect, transform.position, transform.rotation);
+        character.levelUp(experience);
+        Destroy(gameObject);
+    }
+
 }

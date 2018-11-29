@@ -6,6 +6,7 @@ TagManager:
   tags:
   - wall
   - monster1
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - 
   - 
   - spellshield
-  - 
+  - NPC
   - 
   - 
   - 

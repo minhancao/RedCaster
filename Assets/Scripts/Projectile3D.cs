@@ -24,7 +24,8 @@ public class Projectile3D : MonoBehaviour
         {
             Instantiate(projectileEffect, transform.position, transform.rotation);
         } 
-        rb.velocity *= -1;
+        if (rb != null)
+          rb.velocity *= -1;
 
     }
 }
