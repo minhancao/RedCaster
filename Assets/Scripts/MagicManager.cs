@@ -24,7 +24,7 @@ public class MagicManager : MonoBehaviour {
     public GameObject FrostIcon;
     public GameObject LightningIcon;
     public GameObject TeleportIcon;
-
+    public GameObject SwordsIcon;
 
 
     public GameObject IconEffect;
@@ -34,6 +34,7 @@ public class MagicManager : MonoBehaviour {
     public GameObject StoredFrostIcon;
     public GameObject StoredLightningIcon;
     public GameObject StoredTeleportIcon;
+    public GameObject StoredSwordsIcon;
 
     public GameObject[] UISkillBox;
 
@@ -91,6 +92,11 @@ public class MagicManager : MonoBehaviour {
                 if (triggered.Count == 3 && triggered.Contains(rune4) && triggered.Contains(rune2) && triggered.Contains(rune3))
                 {
                     StoreSpell("Teleport");
+                }
+
+                if (triggered.Count == 2 && triggered.Contains(rune3) && triggered.Contains(rune4))
+                {
+                    StoreSpell("Swords");
                 }
                 triggered = new ArrayList();
             }
@@ -153,6 +159,11 @@ public class MagicManager : MonoBehaviour {
             Debug.Log("Entered");
             wand.Teleport();
         }
+
+        if (spell.Equals("Swords"))
+        {
+            wand.RandomSwords();
+        }
     }
 
     public void StoreSpell(string spell){
@@ -195,7 +206,12 @@ public class MagicManager : MonoBehaviour {
             //storedSpellIcon[position].transform.position += new Vector3(596 + position * 70, -347, 0);
         }
 
-        // Moved copy pasted shit down here
+        if (spell.Equals("Swords"))
+        {
+            storedSpellIcon[position] = Instantiate(StoredSwordsIcon, UIOverlay.transform.position, UIOverlay.transform.rotation);
+            //storedSpellIcon[position].transform.SetParent(UIOverlay.transform);
+            //storedSpellIcon[position].transform.position += new Vector3(596 + position * 70, -347, 0);
+        }
         storedSpellIcon[position].transform.SetParent(UIOverlay.transform,false);
         storedSpellIcon[position].transform.position = UISkillBox[position].transform.position;
 
@@ -225,6 +241,12 @@ public class MagicManager : MonoBehaviour {
         {
             Instantiate(IconEffect, transform.position, transform.rotation);
             Animation anim = TeleportIcon.GetComponent<Animation>();
+            anim.Play("Icon Respown");
+        }
+        if (spell.Equals("Swords"))
+        {
+            Instantiate(IconEffect, transform.position, transform.rotation);
+            Animation anim = SwordsIcon.GetComponent<Animation>();
             anim.Play("Icon Respown");
         }
     }

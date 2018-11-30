@@ -11,9 +11,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: cce5f56e14bc64342bd70414dcc20231
+  - enabled: 1
+    path: Assets/Scenes/YukaiScene.unity
+    guid: a00144a04a4124e01bad3260a3d00380
+  - enabled: 0
+    path: Assets/Scenes/MinhScene.unity
+    guid: 5946d29a1e7b8064c8a2dff1e339557f
+  - enabled: 0
+    path: Assets/Scenes/YukaiSceneDup.unity
+    guid: fdcfb4cd9b67f44379cca5b85c215dcb
   - enabled: 1
     path: Assets/Scenes/YukaiScene.unity
     guid: a00144a04a4124e01bad3260a3d00380

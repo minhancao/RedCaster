@@ -12,15 +12,21 @@ public class SkeletonChiefProjectile : MonoBehaviour {
     GameObject chief;
     Vector3 circleCenter;
     Vector3 vectorToTarget;
+    //Vector3 storedTarget;
 
-    public float attackTimer = 15;
-    public float readyTimer = 1.5f;
+    [SerializeField]
+    float attackTimer = 15;
+    [SerializeField]
+    float readyTimer = 1.5f;
+
+
+
 
 
 	// Use this for initialization
 	void Start () {
-        player = FindObjectOfType<CharacterStats>().gameObject;
-        chief = FindObjectOfType<SkeletonChief>().gameObject;
+        player = GameObject.Find("Character");
+        chief = GameObject.Find("SkeletonChief");
 
         // calculate offset
         angle = Mathf.PI / 2 - speed * Time.deltaTime;
@@ -42,26 +48,27 @@ public class SkeletonChiefProjectile : MonoBehaviour {
 	}
     void attack() {
         if (readyTimer < 0)
+        {
+            //float step = 6f * Time.deltaTime;
+            //transform.position = Vector3.MoveTowards(transform.position, storedTarget, step);
             transform.position += vectorToTarget.normalized * 0.5f;
+        }
         else
         {
             readyTimer -= Time.deltaTime;
         }
     }
 
-    void aimAtTarget() {
-        Vector3 targetVector = vectorToTarget - transform.position;
-        float rotationAngle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg - 55;
-        Quaternion quaternion = Quaternion.AngleAxis(rotationAngle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, quaternion, Time.deltaTime * 2f);
-    }
 
     void aimAtPlayer() {
+        //storedTarget = player.transform.position;
         vectorToTarget = player.transform.position - transform.position;
-        float rotationAngle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 55;
+        float rotationAngle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 33;
         Quaternion quaternion = Quaternion.AngleAxis(rotationAngle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, quaternion, Time.deltaTime * 2f ); 
+        transform.rotation = Quaternion.Slerp(transform.rotation, quaternion, Time.deltaTime * 2f );
+
     }
+
     void circularMove()
     {
        

@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         health = TotalHealth;
+        character = GameObject.Find("Character").GetComponent<CharacterStats>();
 	}
 
     public virtual void damageToEnemy(int damage)
@@ -30,11 +31,11 @@ public class Enemy : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-
         Projectile3D proj = hitInfo.gameObject.GetComponent("Projectile3D") as Projectile3D;
         Damage damage = hitInfo.GetComponent<Damage>();
         if (proj != null && damage.owner == Damage.ORIGIN.PLAYER)
         {
+            Debug.Log("HIT ME");
             damageToEnemy(damage.damageValue);
         }
 

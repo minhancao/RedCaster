@@ -86,7 +86,7 @@ MonoBehaviour:
   radius: 3
   speed: 1.2566371
   attackTimer: 10
-  readyTimer: 1.5
+  readyTimer: 1
 --- !u!114 &114657567910657574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d30b5c7736cc49c4ba3acd83afc1ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Seconds: 30
+  Seconds: 25
 --- !u!212 &212112045730292050
 SpriteRenderer:
   m_ObjectHideFlags: 1

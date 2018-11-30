@@ -14,16 +14,11 @@ public class Fireball : MonoBehaviour {
         rb.velocity = transform.right * speed;
         Destroy(gameObject, destroyTime);
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    private void OnTriggerEnter2D(Collider2D hitInfo)
+    void OnTriggerEnter2D(Collider2D hitInfo)
     {
 
-        if (hitInfo.gameObject.layer != 11 && hitInfo.gameObject.layer != 18)
+        if (hitInfo.gameObject.layer != 11 && hitInfo.gameObject.layer != 18 && hitInfo.gameObject.layer != 19)
         {
             Instantiate(fireBallEffect, transform.position, transform.rotation);
             Destroy(gameObject);

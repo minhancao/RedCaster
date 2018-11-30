@@ -5,16 +5,16 @@ using UnityEngine;
 public class SkeletonChief : MonoBehaviour
 {
     [SerializeField]
-    private int phase = 0;
+    int phase = 0;
 
     [SerializeField]
-    private BossEnemy stats;
+    BossEnemy stats;
 
     [SerializeField]
-    private Animator animator;
+    Animator animator;
 
     [SerializeField]
-    private SkeletonChiefProjectile projectile;
+    SkeletonChiefProjectile projectile;
 
     // Phase 0 summon monster
     public Transform SummonWolfTransform1;
@@ -23,16 +23,17 @@ public class SkeletonChief : MonoBehaviour
     public bool monstersSummoned = false;
 
     // Phase 1 circular movement
-    private bool _atCenter = false;
-    private bool _walked = false;
-    private bool _started = false;
-    private bool _movedUp = false;
-    private int _numProjectiles = 10;
-    private int _numRotations = 0;
-    public Vector3 circleCenter;
-    float radius = 3;
+    bool _atCenter = false;
+    bool _walked = false;
+    bool _started = false;
+    bool _movedUp = false;
+    int _numProjectiles = 10;
+    int _numRotations = 0;
+    public Transform circleCenter;
+    float radius = 2.5f;
     float angle = 0;
     float speed = (2 * Mathf.PI) / 7; // 5 seconds to complete a circle
+    float step = 0.05f;
 
     public Transform SummonProjectileTransform;
 
@@ -53,15 +54,8 @@ public class SkeletonChief : MonoBehaviour
 
     public GameObject Player;
 
+    public GameObject wolf;
 
-
-    // Use this for initialization
-    void Start()
-    {
-        //gameObject.transform.position.Set(0, 0, 0);
-        //SummonMonsters()
-
-    }
     // Update is called once per frame
     void Update()
     {
@@ -96,7 +90,14 @@ public class SkeletonChief : MonoBehaviour
                 if (!_walked && !_atCenter)
                 {
                     animator.SetBool("isWalking", true);
-                    _atCenter = walkToCenter();
+                    if (transform.position == circleCenter.position){
+                        _walked = true;
+                        _atCenter = true;
+                    }
+                    else
+                        transform.position = Vector3.MoveTowards(transform.position, circleCenter.position, step);
+
+                    //_atCenter = walkToCenter();
                 }
                 else // if it has walked or is currently at center, begin circular move
                 {
@@ -150,8 +151,9 @@ public class SkeletonChief : MonoBehaviour
 
     void SummonMonsters()
     {
-        // instantiate(wolf, position1, transform);
-        // instantiate(wolf, position2, transform);
+        animator.SetTrigger("Attack");
+        Instantiate(wolf, SummonWolfTransform1.position, transform.rotation);
+        Instantiate(wolf, SummonWolfTransform2.position, transform.rotation);
     }
     IEnumerator SummonProjectiles()
     {
@@ -159,12 +161,10 @@ public class SkeletonChief : MonoBehaviour
             Instantiate(projectile, SummonProjectileTransform, transform);
             yield return new WaitForSeconds(_spawnTimeDelay);
         }
-        StopCoroutine("SummonProjectiles");
-
     }
     bool walkToCenter()
     {
-        if (nearlyEqual(gameObject.transform.position.x, circleCenter.x, 0.01f))
+        if (nearlyEqual(gameObject.transform.position.x, circleCenter.position.x, 0.01f))
         {
             animator.SetTrigger("Attack");
             
@@ -173,9 +173,11 @@ public class SkeletonChief : MonoBehaviour
         }
         else
         {
+            transform.position = Vector3.MoveTowards(transform.position, circleCenter.position, step);
+
             float _x;
 
-            if (circleCenter.x - gameObject.transform.position.x > 0)
+            if (circleCenter.position.x - gameObject.transform.position.x > 0)
             {
                 _x = gameObject.transform.position.x + 0.03f;
             }
@@ -183,7 +185,7 @@ public class SkeletonChief : MonoBehaviour
             {
                 _x = gameObject.transform.position.x - 0.03f;
             }
-            Vector3 _pos = new Vector3(_x, circleCenter.y, 0);
+            Vector3 _pos = new Vector3(_x, circleCenter.position.y, 0);
             gameObject.transform.position = _pos;
 
             return false;
@@ -197,18 +199,27 @@ public class SkeletonChief : MonoBehaviour
         // supposedly move the skeleton to above hte circle center by the radius amount
         if (!_movedUp)
         {
-            // 0.1f is a substitute for speed
-            float _y = 0.03f + gameObject.transform.position.y;
-            Vector3 _pos = new Vector3(circleCenter.x, _y, 0);
-            gameObject.transform.position = _pos;
-
-            if (_pos.y >= circleCenter.y + radius)
-            {
-                Debug.Log("target met");
+            Vector3 _pos = new Vector3(circleCenter.position.x, circleCenter.position.y + radius, circleCenter.position.z);
+            if(_pos == transform.position){
                 _movedUp = true;
-                Debug.Log("Spawning Projectiles");
                 StartCoroutine("SummonProjectiles");
             }
+            else {
+                transform.position = Vector3.MoveTowards(transform.position, _pos, step);
+            }
+
+            //// 0.1f is a substitute for speed
+            //float _y = 0.03f + gameObject.transform.position.y;
+            //Vector3 _pos = new Vector3(circleCenter.x, _y, 0);
+            //gameObject.transform.position = _pos;
+
+            //if (_pos.y >= circleCenter.y + radius)
+            //{
+            //    Debug.Log("target met");
+            //    _movedUp = true;
+            //    Debug.Log("Spawning Projectiles");
+            //    StartCoroutine("SummonProjectiles");
+            //}
         }
         // rotate around circle center
         else
@@ -217,8 +228,8 @@ public class SkeletonChief : MonoBehaviour
             angle += speed * Time.deltaTime;
             if (_started)
             {
-                float _x = Mathf.Cos(angle) * radius + circleCenter.x;
-                float _y = Mathf.Sin(angle) * radius + circleCenter.y;
+                float _x = Mathf.Cos(angle) * radius + circleCenter.position.x;
+                float _y = Mathf.Sin(angle) * radius + circleCenter.position.y;
                 Vector3 _pos = new Vector3(_x, _y, 0);
                 gameObject.transform.position = _pos;
             }

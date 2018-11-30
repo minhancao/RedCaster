@@ -8,17 +8,16 @@ public class AIMovement : MonoBehaviour {
     private bool m_Grounded;            // Whether or not the player is grounded.
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
 
-    private Rigidbody2D m_Rigidbody2D;
-    private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-    private Vector3 m_Velocity = Vector3.zero;
-
-    public float runSpeed = 40f;
-    public float horizontalMove = 1f;
-
-    public bool followPlayer = false;
+    protected Rigidbody2D m_Rigidbody2D;
+    protected bool m_FacingRight = true;  // For determining which way the player is currently facing.
+    Vector3 m_Velocity = Vector3.zero;
 
 
+    [SerializeField]
+    float runSpeed = 10f;
 
+    [SerializeField]
+    float horizontalMove = 1f;
 
     // Use this for initialization
     void Start () {
@@ -34,7 +33,7 @@ public class AIMovement : MonoBehaviour {
     private void FixedUpdate()
     {
         // Move the character by finding the target velocity
-        Vector3 targetVelocity = new Vector2(horizontalMove * 10f, m_Rigidbody2D.velocity.y);
+        Vector3 targetVelocity = new Vector2(horizontalMove * runSpeed, m_Rigidbody2D.velocity.y);
         // And then smoothing it out and applying it to the character
         m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
@@ -54,7 +53,7 @@ public class AIMovement : MonoBehaviour {
 
 
     }
-    private void flip()
+    void flip()
     {
         // Switch the way the player is labelled as facing.
         m_FacingRight = !m_FacingRight;
@@ -62,7 +61,7 @@ public class AIMovement : MonoBehaviour {
         transform.Rotate(0f, 180f, 0f);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    protected void OnCollisionStay2D(Collision2D collision)
     {
         bool wallDetected = false;
         // Checking Normals

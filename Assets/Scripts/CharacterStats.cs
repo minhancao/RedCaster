@@ -36,10 +36,16 @@ public class CharacterStats : MonoBehaviour {
             Debug.Log("Collision Detected: " + collision.gameObject);
         }
         Damage d = collision.gameObject.GetComponent<Damage>();
-        if (d != null)
+        if (d != null &&d.owner != Damage.ORIGIN.PLAYER)
         {
             damageCharacter(d.damageValue); // take damage as well
+            HitEffect e = collision.gameObject.GetComponent<HitEffect>();
+            if (e != null)
+            {
+                e.play(gameObject.transform.position, gameObject.transform.rotation);
+            }
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,15 +55,21 @@ public class CharacterStats : MonoBehaviour {
             Debug.Log("Trigger Detected: " + collision.gameObject);
         }
         Damage d = collision.gameObject.GetComponent<Damage>();
-        if (d != null)
+        if (d != null && d.owner != Damage.ORIGIN.PLAYER)
         {
             damageCharacter(d.damageValue); // take damage as well
+            HitEffect e = collision.gameObject.GetComponent<HitEffect>();
+            if (e != null)
+            {
+                e.play(gameObject.transform.position, gameObject.transform.rotation);
+            }
         }
     }
 
     public void damageCharacter(int damage) {
 
         curHealth -= damage;
+
         if (statusIndicator != null)
         {
             statusIndicator.SetHealth(curHealth, maxHealth);

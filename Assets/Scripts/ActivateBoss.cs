@@ -12,5 +12,6 @@ public class ActivateBoss : MonoBehaviour {
     }
     void OnTriggerEnter2D() {
         BOSS.SetActive(true);
+        Destroy(gameObject);
     }
 }

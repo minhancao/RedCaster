@@ -26,7 +26,7 @@ public class Frost : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
 
-        if (hitInfo.gameObject.layer != 11 && hitInfo.gameObject.layer != 18)
+        if (hitInfo.gameObject.layer != 11 && hitInfo.gameObject.layer != 18 && hitInfo.gameObject.layer != 19)
         {
             Instantiate(frostEffect, transform.position, transform.rotation);
             Destroy(gameObject);

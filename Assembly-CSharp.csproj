@@ -127,6 +127,7 @@
     <Compile Include="Assets\Scripts\Frost.cs" />
     <Compile Include="Assets\Scripts\FrostEffect.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\Scripts\HitEffect.cs" />
     <Compile Include="Assets\Scripts\Interact2D.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\Jellyfish.cs" />
@@ -139,8 +140,10 @@
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MouseMovement.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\OneSword.cs" />
     <Compile Include="Assets\Scripts\PanelController.cs" />
     <Compile Include="Assets\Scripts\Projectile3D.cs" />
+    <Compile Include="Assets\Scripts\RandomSwords.cs" />
     <Compile Include="Assets\Scripts\SettingsMenu.cs" />
     <Compile Include="Assets\Scripts\shieldBar.cs" />
     <Compile Include="Assets\Scripts\shieldBarFill.cs" />
