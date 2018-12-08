@@ -15,9 +15,9 @@ public class SkeletonChiefProjectile : MonoBehaviour {
     //Vector3 storedTarget;
 
     [SerializeField]
-    float attackTimer = 15;
+    float attackTimer = 10;
     [SerializeField]
-    float readyTimer = 1.5f;
+    float readyTimer = 1f;
 
 
 

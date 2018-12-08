@@ -17,6 +17,7 @@ public class SkeletonChief : MonoBehaviour
     SkeletonChiefProjectile projectile;
 
     // Phase 0 summon monster
+    private float _summonDelay = 2f;
     public Transform SummonWolfTransform1;
     public Transform SummonWolfTransform2;
     public bool monstersKilled = false;
@@ -35,6 +36,9 @@ public class SkeletonChief : MonoBehaviour
     float speed = (2 * Mathf.PI) / 7; // 5 seconds to complete a circle
     float step = 0.05f;
 
+    [SerializeField]
+    private float _summonProjectileCooldown = 17.0f;
+    private float _summonProjectileTimer ;
     public Transform SummonProjectileTransform;
 
     // Phase 2 Laser attack
@@ -56,6 +60,10 @@ public class SkeletonChief : MonoBehaviour
 
     public GameObject wolf;
 
+    private void Start()
+    {
+        _summonProjectileTimer = _summonProjectileCooldown;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -71,20 +79,26 @@ public class SkeletonChief : MonoBehaviour
         {
             case 0:
                 animator.SetBool("isWalking", false);
-                if(!monstersSummoned){
+                if (_summonDelay > 0 && !monstersSummoned)
+                {
                     SummonMonsters();
                     monstersSummoned = true;
                 }
+                else
+                {
+                    _summonDelay -= Time.deltaTime;
+                }
+
                 if (stats.health <= stats.TotalHealth * .8 )
                 {
                     phase = 1;
                 }
                 break;
             case 1:
-                if (stats.health <= stats.TotalHealth * .5 )
-                {
-                    phase = 2;
-                }
+                //if (stats.health <= stats.TotalHealth * .5 )
+                //{
+                //    phase = 2;
+                //}
                 // if it hasn't walked to the cneter before, and is not currently at the center
                 // walk to center
                 if (!_walked && !_atCenter)
@@ -105,10 +119,10 @@ public class SkeletonChief : MonoBehaviour
                     circularMove();
                 }
                 break;
-            case 2:
-                animator.SetTrigger("Attack");
-                laserAttack();
-                break;
+            //case 2:
+                //animator.SetTrigger("Attack");
+                //laserAttack();
+                //break;
 
         }
     }
@@ -224,7 +238,13 @@ public class SkeletonChief : MonoBehaviour
         // rotate around circle center
         else
         {
-
+            if (_summonProjectileTimer > 0){
+                _summonProjectileTimer -= Time.deltaTime;
+            }
+            else {
+                StartCoroutine("SummonProjectiles");
+                _summonProjectileTimer = _summonProjectileCooldown;
+            }
             angle += speed * Time.deltaTime;
             if (_started)
             {

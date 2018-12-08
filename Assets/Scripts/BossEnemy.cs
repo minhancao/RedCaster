@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossEnemy : Enemy {
     public StatusIndicator statusIndicator;
@@ -11,8 +12,11 @@ public class BossEnemy : Enemy {
             statusIndicator.SetHealth(health, TotalHealth);
         }
     }
+
     public override void death() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
     public override void damageToEnemy(int damage) {
         health -= damage;
 

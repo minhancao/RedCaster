@@ -14,6 +14,8 @@ public class Controls : MonoBehaviour
     public KeyCode cast { get; set; }
     public KeyCode shield { get; set; }
     public KeyCode interact { get; set; }
+    public KeyCode inventory { get; set; }
+
 
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class Controls : MonoBehaviour
         cast = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("castKey", "Q"));
         shield = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("shieldKey", "Space"));
         interact = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("interactKey", "E"));
+        inventory = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("inventoryKey", "I"));
     }
 
 }

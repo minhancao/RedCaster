@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 0
-  damageValue: 10
+  damageValue: 20
 --- !u!114 &114747045998286920
 MonoBehaviour:
   m_ObjectHideFlags: 1

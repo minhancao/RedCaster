@@ -76,25 +76,25 @@ public class MagicManager : MonoBehaviour {
                 triggered.Add(rune);
             }
             else if (!mm.mouseDown){
-                if (triggered.Count == 2 && triggered.Contains(rune1) && triggered.Contains(rune2)){
+                if (triggered.Count == 2 && triggered.Contains(rune11) && triggered.Contains(rune1)){
                     StoreSpell("FireBall");
                 }
 
-                if (triggered.Count == 2 && triggered.Contains(rune2) && triggered.Contains(rune3))
+                if (triggered.Count == 3 && triggered.Contains(rune12) && triggered.Contains(rune8) && triggered.Contains(rune4))
                 {
                     StoreSpell("Frost");
                 }
 
-                if (triggered.Count == 3 && triggered.Contains(rune1) && triggered.Contains(rune2) && triggered.Contains(rune3))
+                if (triggered.Count == 4 && triggered.Contains(rune12) && triggered.Contains(rune9) && triggered.Contains(rune3) && triggered.Contains(rune6))
                 {
                     StoreSpell("Lightning");
                 }
-                if (triggered.Count == 3 && triggered.Contains(rune4) && triggered.Contains(rune2) && triggered.Contains(rune3))
+                if (triggered.Count == 2 && triggered.Contains(rune1) && triggered.Contains(rune5))
                 {
                     StoreSpell("Teleport");
                 }
 
-                if (triggered.Count == 2 && triggered.Contains(rune3) && triggered.Contains(rune4))
+                if (triggered.Count == 3 && triggered.Contains(rune2) && triggered.Contains(rune3) && triggered.Contains(rune4))
                 {
                     StoreSpell("Swords");
                 }

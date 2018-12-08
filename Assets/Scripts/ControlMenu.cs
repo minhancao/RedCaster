@@ -38,15 +38,14 @@ public class ControlMenu : MonoBehaviour {
             {
                 content.GetChild(i).GetComponentInChildren<Text>().text = Controls.player.shield.ToString();
             }
+            if (content.GetChild(i).name == "InventoryKey")
+            {
+                content.GetChild(i).GetComponentInChildren<Text>().text = Controls.player.inventory.ToString();
+            }
 
         }
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     private void OnGUI()
     {
         keyEvent = Event.current;
@@ -103,7 +102,11 @@ public class ControlMenu : MonoBehaviour {
                 Controls.player.shield = newKey;
                 buttonText.text = Controls.player.shield.ToString();
                 PlayerPrefs.SetString("shieldKey", Controls.player.shield.ToString());
-
+                break;
+            case "inventory":
+                Controls.player.inventory = newKey;
+                buttonText.text = Controls.player.inventory.ToString();
+                PlayerPrefs.SetString("inventoryKey", Controls.player.inventory.ToString());
                 break;
         }
 

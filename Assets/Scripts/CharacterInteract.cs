@@ -27,6 +27,7 @@ public class CharacterInteract : MonoBehaviour {
                 }
             }
             if (currentInteractableObjectScript.type == Interactable.interType.Item){
+                currentInteractableObjectScript.Interact();
                 Debug.Log("Interacting with Item");
             }
         }
